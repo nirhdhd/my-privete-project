@@ -1,0 +1,5 @@
+1) npm install @material-ui/core
+
+2) npm install -g typescript
+
+3)npm install node-sass --save

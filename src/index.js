@@ -1,12 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { StylesProvider } from "@material-ui/core";
+
+import Login from './components/login/login_component.jsx'
+import Register from './components/register/register_component.jsx'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StylesProvider injectFirst>
+      <Register />
+    </StylesProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
