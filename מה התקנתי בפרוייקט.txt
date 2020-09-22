@@ -7,3 +7,7 @@
 4) https://colorhunt.co/palette/201686
 
 5) https://reactrouter.com/
+
+פתרון בעיות שבדרך.....
+
+1) Try doing this:- MongoDB Atlas -> NetworkAccess -> Edit -> Allow Any
