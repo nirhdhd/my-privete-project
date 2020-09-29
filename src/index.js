@@ -7,36 +7,39 @@ import { StylesProvider } from "@material-ui/core";
 //components
 import Login from "./components/login/login_component.jsx";
 import Register from "./components/register/register_component.jsx";
-
+import Home from "./components/home/home_component";
+import StepOne from "./components/createWorksheet/StepOne";
 //react-router
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Switch>
-        <Route path="/">
-          <Login />
-        </Route>
         <Route path="/login">
           <Login />
         </Route>
-
         <Route path="/register">
           <Register />
         </Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/stepOne">
+          <StepOne />
+        </Route>
       </Switch>
-    </div>
+    </Router>
   );
 }
 
 ReactDOM.render(
   <React.StrictMode>
     <StylesProvider injectFirst>
-      <BrowserRouter>
+      <Router>
         <App />
-      </BrowserRouter>
-      ,
+      </Router>
     </StylesProvider>
   </React.StrictMode>,
   document.getElementById("root")

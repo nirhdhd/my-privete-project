@@ -5,6 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
 
+import { Link } from "react-router-dom";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,25 +14,10 @@ function Login() {
   const [helpertxt, setHelpertxt] = useState("");
   const [error, setError] = useState(false);
 
-  /// save this -its work :)
-  // const checkUserForLogin = () => {
-  //   fetch("http://localhost:5000/users/", {
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     method: "GET",
-  //   })
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((res) => {
-  //       console.log(res);
-  //     });
-
-  const checkUserForLogin = () => {
+  const checkUserLogin = () => {
     console.log(email, password);
 
-    Axios.post("http://localhost:5000/login/", {
+    Axios.post("http://localhost:5000/login/login", {
       email: email,
       password: password,
     }).then((res) => {
@@ -44,18 +31,10 @@ function Login() {
         setHelpertxt("");
       }
     });
-
-    // fetch("http://localhost:5000/login/", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({ email: email, password: password }),
-    // }).then((res) => {
-    //   console.log("foo:", res);
-    // });
   };
 
   return (
-    <div className="divStyle">
+    <div className="divStyle_login">
       <Card className="cardStyle">
         <h1>Login</h1>
 
@@ -87,18 +66,13 @@ function Login() {
 
         <div className="foo2">
           <Button
-            onClick={checkUserForLogin}
+            onClick={checkUserLogin}
             className="buttonStyle"
             variant="contained"
           >
             sighn in
           </Button>
-          <a
-            className="linkStyle"
-            href="https://reactjs.org/docs/hooks-overview.html"
-          >
-            not register yet? click here{" "}
-          </a>
+          <Link to="/register"> not register yet? click here </Link>
         </div>
       </Card>
     </div>
