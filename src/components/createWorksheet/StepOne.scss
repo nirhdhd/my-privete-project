@@ -8,7 +8,7 @@ h1 {
   margin: auto;
   display: flex;
   flex-direction: column;
-  background: rgb(214, 224, 240);
+  background: rgb(118, 132, 155);
   background: linear-gradient(
     180deg,
     rgba(214, 224, 240, 1) 0%,
@@ -20,12 +20,13 @@ h1 {
   margin: auto;
 }
 
-.buttonStyle {
+.buttonStyle_sOne {
   width: 200px;
   height: 50px;
   background-color: #8d93ab;
   color: white;
-  margin: 10px;
+  margin: auto;
+  margin-top: 10px;
   &:hover {
     background-color: #60636d;
   }
@@ -45,8 +46,16 @@ h1 {
   margin-left: 10px;
 }
 
-.TextField_stepOne {
-  background-color: white;
-  width: 1000px;
-  margin: auto;
+// .TextField_stepOne {
+//   background-color: white;
+//   width: 1000px;
+//   margin: auto;
+// }
+
+.textArea_class {
+  width: 850px;
+  resize: none;
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: scroll;
 }

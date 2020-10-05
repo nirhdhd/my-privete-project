@@ -8,8 +8,13 @@ import { StylesProvider } from "@material-ui/core";
 import Login from "./components/login/login_component.jsx";
 import Register from "./components/register/register_component.jsx";
 import Home from "./components/home/home_component";
-import StepOne from "./components/createWorksheet/StepOne";
+import StepOne from "./components/createWorksheet/stepOne";
+import StepTwo from "./components/createWorksheet/stepTwo";
+import StepThree from "./components/createWorksheet/stepThree ";
 //react-router
+
+//redux staff
+import { Provider, proviser } from "react-redux";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -17,6 +22,10 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/">
+          <StepOne />
+        </Route>
+
         <Route path="/login">
           <Login />
         </Route>
@@ -29,6 +38,10 @@ function App() {
         <Route path="/stepOne">
           <StepOne />
         </Route>
+
+        <Route path="/stepTwo">
+          <StepTwo />
+        </Route>
       </Switch>
     </Router>
   );
@@ -37,9 +50,11 @@ function App() {
 ReactDOM.render(
   <React.StrictMode>
     <StylesProvider injectFirst>
-      <Router>
-        <App />
-      </Router>
+      <Provider>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
     </StylesProvider>
   </React.StrictMode>,
   document.getElementById("root")
