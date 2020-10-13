@@ -1,61 +1,61 @@
-// h1 {
-//   color: #393b44;
-// }
+h1 {
+  color: #393b44;
+}
 
-// .cardStyle_home {
-//   height: 768px;
-//   width: 1366px;
-//   margin: auto;
-//   display: flex;
-//   flex-direction: column;
-//   background: rgb(118, 132, 155);
-//   background: linear-gradient(
-//     180deg,
-//     rgba(214, 224, 240, 1) 0%,
-//     rgba(241, 243, 248, 1) 34%
-//   );
-// }
-// .divStyle {
-//   text-align: center;
-//   margin: auto;
-// }
+.stepTwo_cardStyle_home {
+  height: 768px;
+  width: 1366px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: rgb(118, 132, 155);
+  background: linear-gradient(
+    180deg,
+    rgba(214, 224, 240, 1) 0%,
+    rgba(241, 243, 248, 1) 34%
+  );
+}
+.stepTwo_divStyle {
+  text-align: center;
+  margin: auto;
+}
 
-// .buttonStyle_sOne {
-//   width: 200px;
-//   height: 50px;
-//   background-color: #8d93ab;
-//   color: white;
-//   margin: auto;
-//   margin-top: 10px;
-//   &:hover {
-//     background-color: #60636d;
-//   }
-// }
-// .Toolbar {
-//   display: flex;
-//   justify-content: space-between;
-// }
+.stepTwo_buttonStyle_sOne {
+  width: 200px;
+  height: 50px;
+  background-color: #8d93ab;
+  color: white;
+  margin: auto;
+  margin-top: 10px;
+  &:hover {
+    background-color: #60636d;
+  }
+}
+.stepTwo_Toolbar {
+  display: flex;
+  justify-content: space-between;
+}
 
-// .appbar {
-//   background-color: #393b44;
-// }
+.stepTwo_appbar {
+  background-color: #393b44;
+}
 
-// .buttons_class {
-//   width: 240px;
-//   height: 500px;
-//   margin-left: 10px;
-// }
+.stepTwo_buttons_class {
+  width: 240px;
+  height: 500px;
+  margin-left: 10px;
+}
 
-// .TextField_stepOne {
-//   background-color: white;
-//   width: 1000px;
-//   margin: auto;
-// }
+.stepTwo_TextField_stepOne {
+  background-color: white;
+  width: 1000px;
+  margin: auto;
+}
 
-// .textArea_class {
-//   width: 1000px;
-//   resize: none;
-//   font-size: large;
-//   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-//   overflow-y: scroll;
-// }
+.stepTwo_textArea_class {
+  width: 1000px;
+  resize: none;
+  font-size: large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow-y: scroll;
+}

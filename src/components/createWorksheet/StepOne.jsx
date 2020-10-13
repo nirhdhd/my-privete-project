@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import "./stepOne.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+import { Link,useHistory } from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -13,11 +13,15 @@ import Icon from "@material-ui/core/Icon";
 import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
 
+
+
 function StepOne() {
+  let history = useHistory();
   const [textVal, setTextVal] = useState("");
 
   const foo = () => {
     console.log("textVal", textVal);
+    history.push("/stepTwo");
   };
 
   return (

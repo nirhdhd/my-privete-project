@@ -9,7 +9,7 @@ import Login from "./components/login/login_component.jsx";
 import Register from "./components/register/register_component.jsx";
 import Home from "./components/home/home_component";
 import StepOne from "./components/createWorksheet/stepOne";
-// import StepTwo from "./components/createWorksheet/stepTwo";
+import StepTwo from "./components/createWorksheet/stepTwo";
 // import StepThree from "./components/createWorksheet/stepThree";
 //react-router
 
@@ -38,6 +38,9 @@ function App() {
         </Route>
         <Route path="/stepOne">
           <StepOne />
+        </Route>
+        <Route path="/stepTwo">
+          <StepTwo />
         </Route>
 
       </Switch>
