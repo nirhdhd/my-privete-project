@@ -9,8 +9,14 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { yellow } from "@material-ui/core/colors";
+import { connect } from "react-redux";
+
+
 
 function Home() {
+
+  const [user, setUser] = useState(null);
+
   return (
     <div className="divStyle">
       <Card className="cardStyle_home">
@@ -22,7 +28,7 @@ function Home() {
         </AppBar>
 
         <h1>Welcome username</h1>
-
+        <h1>currentUser</h1>
         <Card className="buttons_class">
           <Button className="buttonStyle">create worksheet</Button>
           <Button className="buttonStyle">user profile</Button>
@@ -33,4 +39,9 @@ function Home() {
   );
 }
 
-export default Home;
+const mapStateToProps = state  =>({
+  currentUser:state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Home);
+

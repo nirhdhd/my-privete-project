@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import "./login_component.scss";
 import TextField from "@material-ui/core/TextField";
@@ -6,13 +6,27 @@ import Button from "@material-ui/core/Button";
 import Axios from "axios";
 
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-function Login() {
+import {setCurrentUser} from '../../redux/user/user.actions';
+import Try from './try_component';
+
+
+
+
+function Login(props) {
+
+  useEffect(() => {
+    //const {setCurrentUser}=props;
+  });
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [helpertxt, setHelpertxt] = useState("");
   const [error, setError] = useState(false);
+  const [user, setUser] = useState(false);
+
 
   const checkUserLogin = () => {
     console.log(email, password);
@@ -22,11 +36,13 @@ function Login() {
       password: password,
     }).then((res) => {
       console.log(res.data);
-
+      props.setCurrentUser(res.data);
+     
       if (res.data == false) {
         setError(true);
         setHelpertxt("There is a problem with the data entered ");
       } else {
+       
         setError(false);
         setHelpertxt("");
       }
@@ -37,7 +53,7 @@ function Login() {
     <div className="divStyle_login">
       <Card className="cardStyle">
         <h1>Login</h1>
-
+        <Try></Try>
         <div className="foo">
           <TextField
             error={error}
@@ -51,6 +67,7 @@ function Login() {
           />
           <div className="divider"></div>
           <TextField
+            type='password'
             error={error}
             helperText={helpertxt}
             style={{ width: "350px", margin: "auto" }}
@@ -79,4 +96,10 @@ function Login() {
   );
 }
 
-export default Login;
+
+
+const mapDispatchToProps = disptch=>({
+  setCurrentUser:user=>disptch(setCurrentUser(user))
+})
+
+export default connect(null,mapDispatchToProps)(Login);
