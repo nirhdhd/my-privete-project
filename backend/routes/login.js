@@ -8,6 +8,7 @@ router.route("/login").post((req, res) => {
   console.log("from server:", email, password);
   User.find({ email: email, password: password })
     .then((user) => {
+      
       //if cant find user...
       if (user.length == 0) res.send(false);
       else {
@@ -34,8 +35,8 @@ router.route("/register").post((req, res) => {
     .then((user) => {
       //if cant find user...
       if (user.length == 0) {
-        newUser.save().catch((err) => res.status(400).json("Error: " + err));
         res.send(true);
+        newUser.save().catch((err) => res.status(400).json("Error: " + err));
       } else {
         res.send(false);
       }
