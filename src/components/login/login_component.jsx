@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import "./login_component.scss";
 import TextField from "@material-ui/core/TextField";
@@ -8,17 +8,15 @@ import Axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import {setCurrentUser} from '../../redux/user/user.actions';
+import { setCurrentUser } from '../../redux/user/user.actions';
 import Try from './try_component';
-
+import { useHistory } from "react-router-dom";
 
 
 
 function Login(props) {
 
-  useEffect(() => {
-    //const {setCurrentUser}=props;
-  });
+  let history = useHistory()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +27,7 @@ function Login(props) {
 
 
   const checkUserLogin = () => {
-    console.log(email, password);
+    //console.log(email, password);
 
     Axios.post("http://localhost:5000/login/login", {
       email: email,
@@ -37,12 +35,16 @@ function Login(props) {
     }).then((res) => {
       console.log(res.data);
       props.setCurrentUser(res.data);
-     
+
       if (res.data == false) {
+
         setError(true);
         setHelpertxt("There is a problem with the data entered ");
+
       } else {
-       
+
+        localStorage.setItem('myCoockies', 123);
+        history.push("/home");//NIR-DEV
         setError(false);
         setHelpertxt("");
       }
@@ -98,8 +100,8 @@ function Login(props) {
 
 
 
-const mapDispatchToProps = disptch=>({
-  setCurrentUser:user=>disptch(setCurrentUser(user))
+const mapDispatchToProps = disptch => ({
+  setCurrentUser: user => disptch(setCurrentUser(user))
 })
 
-export default connect(null,mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

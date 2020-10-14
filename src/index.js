@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
@@ -18,20 +18,40 @@ import { Provider } from "react-redux";
 import store from './redux/store'
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+
 
 function App() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    console.log("mimimimim");
+    checkIfUserLogin();
+  });
+
+
+  const checkIfUserLogin = () => {
+    //localStorage.setItem('myCoockies', 123);
+    var c = localStorage.getItem('myCoockies');
+    if (c == 123) {
+      setLoggedIn(true);
+    }
+
+  }
+  //localStorage.setItem('myCoockies');
+
+
   return (
     <Router>
       <Switch>
-        {/* <Route path="/">
-          <Login />
-        </Route> */}
 
         <Route path="/login">
-          <Login />
+          {loggedIn ? <Redirect to="/home" /> : <Login />}
         </Route>
         <Route path="/register">
-          <Register />
+          {loggedIn ? <Redirect to="/home" /> : <Register />}
+
         </Route>
         <Route path="/home">
           <Home />
@@ -40,6 +60,9 @@ function App() {
           <StepOne />
         </Route>
         <Route path="/stepTwo">
+          <StepTwo />
+        </Route>
+        <Route path="/">
           <StepTwo />
         </Route>
 

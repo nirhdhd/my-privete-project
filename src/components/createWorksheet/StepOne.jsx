@@ -3,7 +3,7 @@ import Card from "@material-ui/core/Card";
 import "./stepOne.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { Link,useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -24,6 +24,12 @@ function StepOne() {
     history.push("/stepTwo");
   };
 
+  const backToHomepage = () => {
+
+    history.push("/home");
+
+  }
+
   return (
     <div className="divStyle">
       <Card className="cardStyle_home">
@@ -31,7 +37,7 @@ function StepOne() {
           <Toolbar className="Toolbar">
             <Typography variant="h6">name of the app</Typography>
 
-            <IconButton edge="start" color="inherit" aria-label="menu">
+            <IconButton onClick={backToHomepage} edge="start" color="inherit" aria-label="menu">
               <Home />
             </IconButton>
           </Toolbar>
