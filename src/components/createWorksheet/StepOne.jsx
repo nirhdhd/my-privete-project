@@ -20,9 +20,9 @@ function StepOne() {
   const [textVal, setTextVal] = useState("");
 
   const foo = () => {
-    console.log("textVal", textVal);
-    history.push("/stepTwo");
-  };
+    //console.log("textVal", textVal);
+    history.push("/stepTwo", { textVal: textVal })
+  }
 
   const backToHomepage = () => {
 

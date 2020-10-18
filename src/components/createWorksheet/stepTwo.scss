@@ -59,3 +59,10 @@ h1 {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow-y: scroll;
 }
+
+.doo{
+
+  &:hover{
+    background-color: #8d93ab;
+  }
+}

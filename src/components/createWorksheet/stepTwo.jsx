@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
 import "./stepTwo.scss";
 import Button from "@material-ui/core/Button";
@@ -7,8 +7,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
-import { Link, useHistory } from "react-router-dom";
-
+import { Link, useHistory, useLocation } from "react-router-dom";
+import $ from 'jquery'
 const text =
   `Lorem Ipsum is simply 
 typesetting industry.
@@ -18,9 +18,18 @@ printer took a galley`;
 
 
 
-function StepTwo() {
-  const [textVal, setTextVal] = useState("");
+function StepTwo(props) {
+
   let history = useHistory();
+  const location = useLocation();
+  let textVal;
+  // const [textVal, setTextVal] = useState("");
+  //const textVal = (location.state).textVal;
+
+  useEffect(() => {
+    if (location.state != undefined)
+      textVal = (location.state).textVal || "";
+  });
 
   const goBack = () => {
     history.push("/stepOne");
@@ -32,14 +41,13 @@ function StepTwo() {
   }
 
 
+
   const splitText = () => {
+
+    console.log(textVal);
 
     let words;
     let rows = text.split("\n");
-    //let words = rows[0].split(" ").concat();
-    // console.log('rows', rows);
-    //console.log('words', words);
-
     let summeryMetrix = new Array([]);
 
     for (const row of rows) {
@@ -48,19 +56,31 @@ function StepTwo() {
       summeryMetrix[i].push(words);
       i++;
     }
-    summeryMetrix = summeryMetrix[0]; //fix exist problem with the matrix
+    //fix exist problem with the matrix
+    summeryMetrix = summeryMetrix[0];
 
     console.log('summeryMetrix', summeryMetrix);
     console.log('summeryMetrix[0]', summeryMetrix[0]);
 
 
 
-    setTextVal(summeryMetrix[0].map((x, i) =>
 
-      <div className="doo" onClick={fooo(this)} key={i} style={{ width: '100px', height: '30px', backgroundColor: '#F7D08A', margin: '10px' }}>{x}</div>
-    )
-    )
+    // setTextVal(summeryMetrix[0].map((x, i) =>
 
+    //   <div style={{ display: 'flex', flexDirection: 'row' }}
+    //     className="doo"
+    //     onClick={fooo(this)}
+    //     key={i}
+    //     style={{
+    //       width: '100px',
+    //       height: '30px',
+    //       backgroundColor: '#F7D08A',
+    //       margin: '10px'
+    //     }}>{x}</div>
+
+    // ))
+
+    $("#roo").append('<h1>hellow</h1>');
 
   }
 
@@ -108,7 +128,10 @@ function StepTwo() {
 
       <Card style={{ height: "500px", backgroundColor: "#F0F7CA" }}>
 
+
+        <div style={{ display: 'flex', flexDirection: 'row' }} id="hereee"></div>
         {textVal}
+        <div style={{ fontSize: "50px" }} id="roo">123123</div>
 
       </Card>
 
