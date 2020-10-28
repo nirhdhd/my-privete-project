@@ -23,7 +23,8 @@ function StepTwo(props) {
   let history = useHistory();
   const location = useLocation();
   let textVal;
-  // const [textVal, setTextVal] = useState("");
+
+  const [wordKey, setWordKey] = useState(0);
   //const textVal = (location.state).textVal;
 
   useEffect(() => {
@@ -40,11 +41,14 @@ function StepTwo(props) {
     console.log(x);
   }
 
-
+  const onWordClick = (e) => {
+    console.log('e', e);
+    console.log(e.currentTarget.innerText)
+  }
 
   const splitText = () => {
 
-    console.log(textVal);
+    //console.log(textVal);
 
     let words;
     let rows = text.split("\n");
@@ -59,11 +63,40 @@ function StepTwo(props) {
     //fix exist problem with the matrix
     summeryMetrix = summeryMetrix[0];
 
-    console.log('summeryMetrix', summeryMetrix);
-    console.log('summeryMetrix[0]', summeryMetrix[0]);
+    //console.log('summeryMetrix', summeryMetrix);
+    // console.log('summeryMetrix[0]', summeryMetrix[0]);
+
+    var contect = document.createElement('div');
+    let divValue;
+    //let wordKey = 0
+
+    summeryMetrix.map(row => {
+
+      divValue = document.createElement('div');
+
+      row.map(word => {
+
+        let span = document.createElement('span');
+        $(span).text(word);
+        $(span).addClass('oneWord');
+        $(span).on('click', function (event) {
+          event.preventDefault();
+          onWordClick(event);
+
+        })
+        $(span).attr("wordKey", wordKey)
+        setWordKey(wordKey + 1);
+
+        $(divValue).append(span);
+        $(divValue).append(" ");
 
 
+      })
 
+      $(contect).append(divValue);
+      $(contect).append('\n');
+
+    })
 
     // setTextVal(summeryMetrix[0].map((x, i) =>
 
@@ -80,9 +113,12 @@ function StepTwo(props) {
 
     // ))
 
-    $("#roo").append('<h1>hellow</h1>');
+    $("#roo").append(contect);
 
   }
+
+
+
 
   return (
     <div className="stepTwo_divStyle">
@@ -134,7 +170,7 @@ function StepTwo(props) {
         <div style={{ fontSize: "50px" }} id="roo">123123</div>
 
       </Card>
-
+      <div onClick={() => console.log("asdasdaasdas")}>asdasda</div>
 
     </div>
   );

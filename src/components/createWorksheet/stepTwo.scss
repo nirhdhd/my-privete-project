@@ -66,3 +66,15 @@ h1 {
     background-color: #8d93ab;
   }
 }
+
+
+
+.oneWord{
+
+  &:hover{
+    background-color: #4b4b4b;
+    border: 2px solid springgreen;
+    border-radius: 15px;
+    color: white;
+  }
+}
