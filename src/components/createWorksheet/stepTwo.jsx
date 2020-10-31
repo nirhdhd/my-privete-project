@@ -20,11 +20,12 @@ printer took a galley`;
 
 function StepTwo(props) {
 
+  let flag = 0;
+  let textVal;
   let history = useHistory();
   const location = useLocation();
-  let textVal;
 
-  const [wordKey, setWordKey] = useState(0);
+  const [wordStore, setWordStore] = useState([]);
   //const textVal = (location.state).textVal;
 
   useEffect(() => {
@@ -36,20 +37,42 @@ function StepTwo(props) {
     history.push("/stepOne");
   };
 
-
-  const fooo = (x) => {
-    console.log(x);
-  }
-
   const onWordClick = (e) => {
-    console.log('e', e);
-    console.log(e.currentTarget.innerText)
+
+    //console.log('e', e);
+    //console.log(e.currentTarget)
+    //console.log(e.currentTarget.innerText)
+    //console.log("wordkey:", e.currentTarget.attributes.wordkey.value);
+
+    let wordkey = e.currentTarget.attributes.wordkey.value;
+    let txt = e.currentTarget.innerText;
+    let tempoArray = wordStore;
+
+    tempoArray.map((val, index) => {
+      console.log('from inside', val.wordkey, wordkey);
+      if (val.wordkey == wordkey) {
+        //tempoArray.splice(index, 1)
+        setWordStore(tempoArray);
+        console.log(" after delete from wordStore in index:", index, wordStore);
+        flag = 1;
+      }
+
+    });
+
+    if (flag == 0) {
+      tempoArray.push({ wordkey: wordkey, txt: txt });
+      setWordStore(tempoArray);
+      console.log("after add to wordStore", wordStore)
+    }
   }
+
+
+
+
 
   const splitText = () => {
 
-    //console.log(textVal);
-
+    let wordKey = 0;
     let words;
     let rows = text.split("\n");
     let summeryMetrix = new Array([]);
@@ -73,7 +96,6 @@ function StepTwo(props) {
     summeryMetrix.map(row => {
 
       divValue = document.createElement('div');
-
       row.map(word => {
 
         let span = document.createElement('span');
@@ -85,7 +107,8 @@ function StepTwo(props) {
 
         })
         $(span).attr("wordKey", wordKey)
-        setWordKey(wordKey + 1);
+        $(span).attr("deleted", 0)
+        wordKey++;
 
         $(divValue).append(span);
         $(divValue).append(" ");
@@ -95,23 +118,7 @@ function StepTwo(props) {
 
       $(contect).append(divValue);
       $(contect).append('\n');
-
     })
-
-    // setTextVal(summeryMetrix[0].map((x, i) =>
-
-    //   <div style={{ display: 'flex', flexDirection: 'row' }}
-    //     className="doo"
-    //     onClick={fooo(this)}
-    //     key={i}
-    //     style={{
-    //       width: '100px',
-    //       height: '30px',
-    //       backgroundColor: '#F7D08A',
-    //       margin: '10px'
-    //     }}>{x}</div>
-
-    // ))
 
     $("#roo").append(contect);
 
