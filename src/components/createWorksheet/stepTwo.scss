@@ -46,23 +46,11 @@ h1 {
   margin-left: 10px;
 }
 
-.stepTwo_TextField_stepOne {
-  background-color: white;
-  width: 1000px;
-  margin: auto;
-}
 
-.stepTwo_textArea_class {
-  width: 1000px;
-  resize: none;
-  font-size: large;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+.elemnts_div{
+  width: 855px;
+  height: 400px;
+  background-color: #ffffff;
+  border: 2px solid black;
   overflow-y: scroll;
-}
-
-.doo{
-
-  &:hover{
-    background-color: #8d93ab;
-  }
 }

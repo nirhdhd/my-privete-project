@@ -10,6 +10,7 @@ import Register from "./components/register/register_component.jsx";
 import Home from "./components/home/home_component";
 import StepOne from "./components/createWorksheet/stepOne";
 import StepTwo from "./components/createWorksheet/stepTwo";
+import OneWord from "./components/oneWord/oneWord"
 // import StepThree from "./components/createWorksheet/stepThree";
 //react-router
 
@@ -26,7 +27,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    console.log("mimimimim");
     checkIfUserLogin();
   });
 
@@ -46,6 +46,9 @@ function App() {
     <Router>
       <Switch>
 
+        <Route path="/oneword">
+          <OneWord />
+        </Route>
         <Route path="/login">
           {loggedIn ? <Redirect to="/home" /> : <Login />}
         </Route>

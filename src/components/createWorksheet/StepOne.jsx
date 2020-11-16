@@ -58,7 +58,7 @@ function StepOne() {
           {" "}
           <textarea
             onChange={(e) => setTextVal(e.target.value)}
-            rows="15"
+            rows="18"
             className="textArea_class"
           ></textarea>
           <Button onClick={foo} className="buttonStyle_sOne">

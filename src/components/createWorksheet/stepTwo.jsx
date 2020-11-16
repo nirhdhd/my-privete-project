@@ -9,22 +9,25 @@ import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import $ from 'jquery'
-const text =
-  `Lorem Ipsum is simply 
-typesetting industry.
-standard dummy text ever 
-printer took a galley`;
+import OneWord from '../oneWord/oneWord'
+
+// const textVal =
+//   `Lorem Ipsum is simply 
+// typesetting industry.
+// standard dummy text ever 
+// printer took a galley`;
 
 
 
 
 function StepTwo(props) {
 
+  const [elementss, setElementss] = useState([]);
+
   let history = useHistory();
   const location = useLocation();
+  const elementssTemp = []
   let textVal;
-  // const [textVal, setTextVal] = useState("");
-  //const textVal = (location.state).textVal;
 
   useEffect(() => {
     if (location.state != undefined)
@@ -36,18 +39,17 @@ function StepTwo(props) {
   };
 
 
-  const fooo = (x) => {
+  const foo = (x) => {
     console.log(x);
   }
 
 
 
+
   const splitText = () => {
 
-    console.log(textVal);
-
     let words;
-    let rows = text.split("\n");
+    let rows = textVal.split("\n");
     let summeryMetrix = new Array([]);
 
     for (const row of rows) {
@@ -60,29 +62,29 @@ function StepTwo(props) {
     summeryMetrix = summeryMetrix[0];
 
     console.log('summeryMetrix', summeryMetrix);
-    console.log('summeryMetrix[0]', summeryMetrix[0]);
 
+    for (let i = 0; i < summeryMetrix.length; i++) {
 
+      let elementssTempArry = [];
 
+      for (let z = 0; z < summeryMetrix[i].length; z++) {
 
-    // setTextVal(summeryMetrix[0].map((x, i) =>
-
-    //   <div style={{ display: 'flex', flexDirection: 'row' }}
-    //     className="doo"
-    //     onClick={fooo(this)}
-    //     key={i}
-    //     style={{
-    //       width: '100px',
-    //       height: '30px',
-    //       backgroundColor: '#F7D08A',
-    //       margin: '10px'
-    //     }}>{x}</div>
-
-    // ))
-
-    $("#roo").append('<h1>hellow</h1>');
-
+        let word = summeryMetrix[i][z];
+        let id = i + z;
+        console.log(id, word);
+        const element = (<OneWord key={id} id={id} word={word} />);
+        elementssTempArry.push(element);
+      }
+      elementssTemp.push(<div style={{ display: "flex", flexDirection: "row" }}>{elementssTempArry}</div>);
+    }
+    setElementss(elementssTemp);
   }
+
+
+
+
+
+
 
   return (
     <div className="stepTwo_divStyle">
@@ -115,8 +117,11 @@ function StepTwo(props) {
           }}
         >
           {" "}
-          <textarea rows="15" className="textArea_class"></textarea>
-          <textarea rows="2" className="textArea_class"></textarea>
+          <div className="elemnts_div"> {elementss}  </div>
+
+
+          {/* <textarea rows="15" className="textArea_class"></textarea>
+          <textarea rows="2" className="textArea_class"></textarea> */}
           <div>
             {" "}
             <Button onClick={goBack} className="stepTwo_buttonStyle_sOne">back</Button>
@@ -126,16 +131,9 @@ function StepTwo(props) {
 
       </Card>
 
-      <Card style={{ height: "500px", backgroundColor: "#F0F7CA" }}>
 
 
-        <div style={{ display: 'flex', flexDirection: 'row' }} id="hereee"></div>
-        {textVal}
-        <div style={{ fontSize: "50px" }} id="roo">123123</div>
-
-      </Card>
-
-
+      <div id="roo" ></div>
     </div>
   );
 }
