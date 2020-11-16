@@ -22,22 +22,13 @@ import OneWord from '../oneWord/oneWord'
 
 function StepTwo(props) {
 
-<<<<<<< HEAD
+
   const [elementss, setElementss] = useState([]);
 
   let history = useHistory();
   const location = useLocation();
   const elementssTemp = []
   let textVal;
-=======
-  let flag = 0;
-  let textVal;
-  let history = useHistory();
-  const location = useLocation();
-
-  const [wordStore, setWordStore] = useState([]);
-  //const textVal = (location.state).textVal;
->>>>>>> bf385a85bac0bcb2e56cbe9c3c500a0bf3b04047
 
   useEffect(() => {
     if (location.state != undefined)
@@ -47,48 +38,6 @@ function StepTwo(props) {
   const goBack = () => {
     history.push("/stepOne");
   };
-
-  const onWordClick = (e) => {
-
-    //console.log('e', e);
-    //console.log(e.currentTarget)
-    //console.log(e.currentTarget.innerText)
-    //console.log("wordkey:", e.currentTarget.attributes.wordkey.value);
-
-    let wordkey = e.currentTarget.attributes.wordkey.value;
-    let txt = e.currentTarget.innerText;
-    let tempoArray = wordStore;
-
-<<<<<<< HEAD
-  const foo = (x) => {
-    console.log(x);
-=======
-    tempoArray.map((val, index) => {
-      console.log('from inside', val.wordkey, wordkey);
-      if (val.wordkey == wordkey) {
-        //tempoArray.splice(index, 1)
-        setWordStore(tempoArray);
-        console.log(" after delete from wordStore in index:", index, wordStore);
-        flag = 1;
-      }
-
-    });
-
-    if (flag == 0) {
-      tempoArray.push({ wordkey: wordkey, txt: txt });
-      setWordStore(tempoArray);
-      console.log("after add to wordStore", wordStore)
-    }
->>>>>>> bf385a85bac0bcb2e56cbe9c3c500a0bf3b04047
-  }
-
-
-
-
-<<<<<<< HEAD
-  const splitText = () => {
-=======
->>>>>>> bf385a85bac0bcb2e56cbe9c3c500a0bf3b04047
 
   const splitText = () => {
 
@@ -106,7 +55,6 @@ function StepTwo(props) {
     //fix exist problem with the matrix
     summeryMetrix = summeryMetrix[0];
 
-<<<<<<< HEAD
     console.log('summeryMetrix', summeryMetrix);
 
     for (let i = 0; i < summeryMetrix.length; i++) {
@@ -125,51 +73,6 @@ function StepTwo(props) {
     }
     setElementss(elementssTemp);
   }
-=======
-    //console.log('summeryMetrix', summeryMetrix);
-    // console.log('summeryMetrix[0]', summeryMetrix[0]);
-
-    var contect = document.createElement('div');
-    let divValue;
-    //let wordKey = 0
-
-    summeryMetrix.map(row => {
-
-      divValue = document.createElement('div');
-      row.map(word => {
-
-        let span = document.createElement('span');
-        $(span).text(word);
-        $(span).addClass('oneWord');
-        $(span).on('click', function (event) {
-          event.preventDefault();
-          onWordClick(event);
-
-        })
-        $(span).attr("wordKey", wordKey)
-        $(span).attr("deleted", 0)
-        wordKey++;
->>>>>>> bf385a85bac0bcb2e56cbe9c3c500a0bf3b04047
-
-        $(divValue).append(span);
-        $(divValue).append(" ");
-
-
-<<<<<<< HEAD
-
-
-=======
-      })
-
-      $(contect).append(divValue);
-      $(contect).append('\n');
-    })
-
-    $("#roo").append(contect);
->>>>>>> bf385a85bac0bcb2e56cbe9c3c500a0bf3b04047
-
-
-
 
 
   return (
@@ -205,7 +108,6 @@ function StepTwo(props) {
           {" "}
           <div className="elemnts_div"> {elementss}  </div>
 
-
           {/* <textarea rows="15" className="textArea_class"></textarea>
           <textarea rows="2" className="textArea_class"></textarea> */}
           <div>
@@ -216,20 +118,6 @@ function StepTwo(props) {
         </div>
 
       </Card>
-
-<<<<<<< HEAD
-
-=======
-      <Card style={{ height: "500px", backgroundColor: "#F0F7CA" }}>
-
-
-        <div style={{ display: 'flex', flexDirection: 'row' }} id="hereee"></div>
-        {textVal}
-        <div style={{ fontSize: "50px" }} id="roo">123123</div>
-
-      </Card>
-      <div onClick={() => console.log("asdasdaasdas")}>asdasda</div>
->>>>>>> bf385a85bac0bcb2e56cbe9c3c500a0bf3b04047
 
       <div id="roo" ></div>
     </div>
