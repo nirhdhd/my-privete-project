@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
-import "./stepOne.scss";
+import "./StepOne.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link, useHistory } from "react-router-dom";

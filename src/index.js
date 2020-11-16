@@ -8,7 +8,7 @@ import { StylesProvider } from "@material-ui/core";
 import Login from "./components/login/login_component.jsx";
 import Register from "./components/register/register_component.jsx";
 import Home from "./components/home/home_component";
-import StepOne from "./components/createWorksheet/stepOne";
+import StepOne from "./components/createWorksheet/StepOne";
 import StepTwo from "./components/createWorksheet/stepTwo";
 import OneWord from "./components/oneWord/oneWord"
 // import StepThree from "./components/createWorksheet/stepThree";
