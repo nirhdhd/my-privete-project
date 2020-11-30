@@ -4,11 +4,8 @@ import "./login_component.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Axios from "axios";
-
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-
-import { setCurrentUser } from '../../redux/user/user.actions';
 import Try from './try_component';
 import { useHistory } from "react-router-dom";
 
@@ -20,7 +17,6 @@ function Login(props) {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [helpertxt, setHelpertxt] = useState("");
   const [error, setError] = useState(false);
   const [user, setUser] = useState(false);
@@ -34,7 +30,7 @@ function Login(props) {
       password: password,
     }).then((res) => {
       console.log(res.data);
-      props.setCurrentUser(res.data);
+      //props.setCurrentUser(res.data);
 
       if (res.data == false) {
 
@@ -100,8 +96,8 @@ function Login(props) {
 
 
 
-const mapDispatchToProps = disptch => ({
-  setCurrentUser: user => disptch(setCurrentUser(user))
+const mapDispatchToProps = state => ({
+
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapDispatchToProps)(Login);

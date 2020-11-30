@@ -74,7 +74,6 @@ function StepTwo(props) {
     setElementss(elementssTemp);
   }
 
-
   return (
     <div className="stepTwo_divStyle">
       <Card className="stepTwo_cardStyle_home">

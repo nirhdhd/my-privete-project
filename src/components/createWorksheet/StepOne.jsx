@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
-import "./StepOne.scss";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link, useHistory } from "react-router-dom";
@@ -8,27 +7,67 @@ import { Link, useHistory } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-
-import Icon from "@material-ui/core/Icon";
 import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
+import "./StepOne.scss";
+import { setTextToMatrix, setTextDictionary } from "./../../redux/actions"
+import { connect } from 'react-redux'
 
 
-
-function StepOne() {
+function StepOne({ textMatrix, dispatch }) {
   let history = useHistory();
   const [textVal, setTextVal] = useState("");
 
   const foo = () => {
+
+    dispatch(setTextToMatrix(splitText()))
+    dispatch(setTextDictionary(textToArray(textVal)))
     //console.log("textVal", textVal);
     history.push("/stepTwo", { textVal: textVal })
   }
 
-  const backToHomepage = () => {
+  const textToArray = (text) => {
+    let tempArray = [];
+    let textArray = [];
+    let index = 1;
+    tempArray = text.split(' ')
 
-    history.push("/home");
-
+    tempArray.forEach(element => {
+      textArray.push({ index: index, text: element })
+      index++;
+    });
+    return textArray;
   }
+
+  const splitText = () => {
+    let words;
+    let rows = textVal.split("\n");
+    let summeryMetrix = new Array([]);
+
+    let wordsIndex = 0;
+    for (const row of rows) {
+      let index = 0;
+      words = row.split(" ").concat();
+
+      words = words.map(val => {
+        wordsIndex++;
+        return { index: wordsIndex, text: val }
+      }
+      )
+      summeryMetrix[index].push(words);
+      index++;
+    }
+    //fix exist problem with the matrix
+    summeryMetrix = summeryMetrix[0];
+    console.log('summeryMetrix', summeryMetrix);
+    return summeryMetrix;
+  }
+
+  const backToHomepage = () => {
+    history.push("/home");
+  }
+
+
 
   return (
     <div className="divStyle">
@@ -70,4 +109,8 @@ function StepOne() {
   );
 }
 
-export default StepOne;
+const mapStateToProps = state => ({
+  textMatrix: state.textMatrix
+})
+
+export default connect(mapStateToProps)(StepOne);
