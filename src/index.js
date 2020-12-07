@@ -8,10 +8,10 @@ import { StylesProvider } from "@material-ui/core";
 import Login from "./components/login/login_component.jsx";
 import Register from "./components/register/register_component.jsx";
 import Home from "./components/home/home_component";
-import StepOne from "./components/createWorksheet/StepOne";
-import StepTwo from "./components/createWorksheet/stepTwo";
+import Step_One from "./components/createWorksheet/step_one";
+import Step_Two from "./components/createWorksheet/step_two";
 import OneWord from "./components/oneWord/oneWord"
-// import StepThree from "./components/createWorksheet/stepThree";
+// import Step_Three from "./components/createWorksheet/step_three";
 //react-router
 
 //redux staff
@@ -59,14 +59,14 @@ function App() {
         <Route path="/home">
           <Home />
         </Route>
-        <Route path="/stepOne">
-          <StepOne />
+        <Route path="/step_one">
+          <Step_One />
         </Route>
-        <Route path="/stepTwo">
-          <StepTwo />
+        <Route path="/step_two">
+          <Step_Two />
         </Route>
         <Route path="/">
-          <StepTwo />
+          <Step_Two />
         </Route>
 
       </Switch>

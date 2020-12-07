@@ -9,12 +9,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
-import "./StepOne.scss";
-import { setTextToMatrix, setTextDictionary } from "./../../redux/actions"
+import "./step_one.scss";
+import { setTextToMatrix, setTextDictionary } from "../../redux/actions"
 import { connect } from 'react-redux'
 
 
-function StepOne({ textMatrix, dispatch }) {
+function Step_One({ textMatrix, dispatch }) {
   let history = useHistory();
   const [textVal, setTextVal] = useState("");
 
@@ -23,7 +23,7 @@ function StepOne({ textMatrix, dispatch }) {
     dispatch(setTextToMatrix(splitText()))
     dispatch(setTextDictionary(textToArray(textVal)))
     //console.log("textVal", textVal);
-    history.push("/stepTwo", { textVal: textVal })
+    history.push("/step_two", { textVal: textVal })
   }
 
   const textToArray = (text) => {
@@ -113,4 +113,4 @@ const mapStateToProps = state => ({
   textMatrix: state.textMatrix
 })
 
-export default connect(mapStateToProps)(StepOne);
+export default connect(mapStateToProps)(Step_One);

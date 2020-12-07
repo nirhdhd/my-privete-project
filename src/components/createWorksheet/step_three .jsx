@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 // import Card from "@material-ui/core/Card";
-// import "./stepThree.scss";
+// import "./step_three.scss";
 // import Button from "@material-ui/core/Button";
 // import AppBar from "@material-ui/core/AppBar";
 // import Toolbar from "@material-ui/core/Toolbar";
@@ -8,7 +8,7 @@
 // import IconButton from "@material-ui/core/IconButton";
 // import Home from "@material-ui/icons/Home";
 
-// function StepThree() {
+// function Step_Three() {
 //   return (
 //     <div className="divStyle">
 //       <Card className="cardStyle_home">
@@ -48,4 +48,4 @@
 //   );
 // }
 
-// export default StepThree;
+// export default Step_Three;

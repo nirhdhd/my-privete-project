@@ -19,8 +19,8 @@ function Home() {
     history.push("/login");
   }
 
-  const goToStepOne = () => {
-    history.push("/stepOne");
+  const goToStep_One = () => {
+    history.push("/step_one");
   }
 
   return (
@@ -34,9 +34,9 @@ function Home() {
         </AppBar>
 
         <h1>Welcome username</h1>
-        <h1>currentUser</h1>
+
         <Card className="buttons_class">
-          <Button onClick={goToStepOne} className="buttonStyle">create worksheet
+          <Button onClick={goToStep_One} className="buttonStyle">create worksheet
           </Button>
           <Button className="buttonStyle">user profile</Button>
           <Button className="buttonStyle">create worksheet</Button>
@@ -47,7 +47,7 @@ function Home() {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+
 })
 
 export default connect(mapStateToProps)(Home);

@@ -4,7 +4,7 @@
 const INITIAL_STATE = {
     textMatrix: null,
     textDictionary: null,
-    textStore: null,//<!--TODO: SYNC WORD STORE TO STEP TWO-->
+    textStore: [],//<!--TODO: SYNC WORD STORE TO STEP TWO-->
     CurrentUser: null
 }
 
@@ -24,10 +24,19 @@ const Reducer = (state = INITIAL_STATE, action) => {
             };
             break;
 
-        case "SET_WORDS_STORE":
+        case "SET_TEXT_STORE":
+
+            let id = action.payload;
+            let tempTextStore = state.textStore;
+            if (tempTextStore.includes(id)) {
+                tempTextStore = tempTextStore.filter(val => val != id)
+            }
+            else {
+                tempTextStore.push(id)
+            }
             return {
                 ...state,
-                textDictionary: action.payload
+                textStore: tempTextStore
             };
             break;
 

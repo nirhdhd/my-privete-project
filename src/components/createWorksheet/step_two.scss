@@ -48,9 +48,12 @@ h1 {
 
 
 .elemnts_div{
+  display: block;
+  flex-direction: row;
   width: 855px;
   height: 400px;
   background-color: #ffffff;
   border: 2px solid black;
   overflow-y: scroll;
+  overflow-x: hidden;
 }

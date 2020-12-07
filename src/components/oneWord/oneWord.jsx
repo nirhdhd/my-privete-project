@@ -2,15 +2,19 @@ import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
 
 import './oneWord.scss'
-
+import { setTextStore } from "../../redux/actions"
 
 function OneWord(props) {
     const [active, setActive] = useState(false);
     let ref = useRef();
 
     const clickMe = (e) => {
+        let id = ref.current.id
         setActive(!active);
-        console.log(ref.current.id);
+        console.log(id);
+
+        props.dispatch(setTextStore(id));
+        console.log('textStore', props.textStore)
     }
 
     return (
@@ -26,7 +30,7 @@ function OneWord(props) {
 }
 
 const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
+    textStore: state.textStore
 })
 
 

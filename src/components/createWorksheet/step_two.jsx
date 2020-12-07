@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Card from "@material-ui/core/Card";
-import "./stepTwo.scss";
+import "./step_two.scss";
 import Button from "@material-ui/core/Button";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -11,37 +11,35 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import $ from 'jquery'
 import OneWord from '../oneWord/oneWord'
 
-// const textVal =
-//   `Lorem Ipsum is simply 
-// typesetting industry.
-// standard dummy text ever 
-// printer took a galley`;
+const textVal =
+  `Lorem Ipsum is simply 
+typesetting industry.
+standard dummy text ever 
+printer took a galley`;
 
 
-
-
-function StepTwo(props) {
-
+function Step_Two(props) {
 
   const [elementss, setElementss] = useState([]);
 
   let history = useHistory();
   const location = useLocation();
-  const elementssTemp = []
-  let textVal;
+
+  //let textVal;
 
   useEffect(() => {
-    if (location.state != undefined)
-      textVal = (location.state).textVal || "";
+    //if (location.state != undefined)
+    // textVal = (location.state).textVal || "";
   });
 
   const goBack = () => {
-    history.push("/stepOne");
+    history.push("/step_one");
   };
 
   const splitText = () => {
 
-    let wordKey = 0;
+
+    const elementssTemp = []
     let words;
     let rows = textVal.split("\n");
     let summeryMetrix = new Array([]);
@@ -54,25 +52,24 @@ function StepTwo(props) {
     }
     //fix exist problem with the matrix
     summeryMetrix = summeryMetrix[0];
+    //console.log('summeryMetrix', summeryMetrix);
 
-    console.log('summeryMetrix', summeryMetrix);
-
+    let index = 0;
     for (let i = 0; i < summeryMetrix.length; i++) {
-
       let elementssTempArry = [];
-
-      for (let z = 0; z < summeryMetrix[i].length; z++) {
+      let length = summeryMetrix[i].length;
+      for (let z = 0; z < length; z++) {
 
         let word = summeryMetrix[i][z];
-        let id = i + z;
-        console.log(id, word);
-        const element = (<OneWord key={id} id={id} word={word} />);
+        const element = (<OneWord key={index} id={index} word={word} />);
         elementssTempArry.push(element);
+        index++;
       }
       elementssTemp.push(<div style={{ display: "flex", flexDirection: "row" }}>{elementssTempArry}</div>);
     }
     setElementss(elementssTemp);
   }
+
 
   return (
     <div className="stepTwo_divStyle">
@@ -107,8 +104,7 @@ function StepTwo(props) {
           {" "}
           <div className="elemnts_div"> {elementss}  </div>
 
-          {/* <textarea rows="15" className="textArea_class"></textarea>
-          <textarea rows="2" className="textArea_class"></textarea> */}
+
           <div>
             {" "}
             <Button onClick={goBack} className="stepTwo_buttonStyle_sOne">back</Button>
@@ -118,9 +114,9 @@ function StepTwo(props) {
 
       </Card>
 
-      <div id="roo" ></div>
+
     </div>
   );
 }
 
-export default StepTwo;
+export default Step_Two;
