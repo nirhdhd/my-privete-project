@@ -46,17 +46,21 @@ function Step_Two({ textStore, textDictionary, dispatch }) {
   const goBack = () => {
     history.push("/step_one");
   };
-  const textToArray = (text) => {
+
+  const textToArray = () => {
+
     let tempArray = [];
     let textArray = [];
     let index = 1;
-    tempArray = text.split(' ')
+    tempArray = textVal.split(' ')
 
     tempArray.forEach(element => {
       textArray.push({ index: index, text: element })
       index++;
     });
-    return textArray;
+
+    dispatch(setTextDictionary(textArray));
+    //return textArray;
   }
   const splitText = () => {
     const elementssTemp = []
@@ -70,35 +74,36 @@ function Step_Two({ textStore, textDictionary, dispatch }) {
       summeryMetrix[i].push(words);
       i++;
     }
-    //fix exist problem with the matrix
+    //importent line!
     summeryMetrix = summeryMetrix[0];
-    //console.log('summeryMetrix', summeryMetrix);
+    dispatch(setTextToMatrix(summeryMetrix))
 
     let index = 0;
     for (let i = 0; i < summeryMetrix.length; i++) {
-      let elementssTempArry = [];
+      let elementsTempArry = [];
       let length = summeryMetrix[i].length;
       for (let z = 0; z < length; z++) {
 
         let word = summeryMetrix[i][z];
         const element = (<OneWord key={index} id={index} word={word} />);
-        elementssTempArry.push(element);
+        elementsTempArry.push(element);
         index++;
       }
-      elementssTemp.push(<div style={{ display: "flex", flexDirection: "row" }}>{elementssTempArry}</div>);
+      elementssTemp.push(<div style={{ display: "flex", flexDirection: "row" }}>{elementsTempArry}</div>);
     }
     setElementss(elementssTemp);
-
+    textToArray();
+    console.log("textStore", textStore)
+    console.log("textDictionary", textDictionary)
   }
+
   const updateTextStore = () => {
 
-    dispatch(setTextToMatrix(splitText()))
-    dispatch(setTextDictionary(textToArray(textVal)))
+    // dispatch(setTextToMatrix(splitText()))
+    //dispatch(setTextDictionary(textToArray(textVal)))
 
     if (textDictionary.length == 0) return;
     const wordsToRender = textDictionary.filter((x) => textStore.includes(x.index))
-
-
 
     console.log("textStore", textStore)
     console.log("textDictionary", textDictionary)
@@ -109,20 +114,21 @@ function Step_Two({ textStore, textDictionary, dispatch }) {
     //   elementssTempArry.push(element);
     // });
 
-
     //_setTextStore(elementssTempArry);
 
 
   }
   const reset_selection = () => {
-    // dispatch(setTextDictionary([]))
-    // dispatch(setTextToMatrix(splitText()))
-    // splitText()
+
+    //FIXME:: state למה אני לא מצליח לאפס את ה 
+    setElementss([]);
+    splitText();
+    console.log(elementss);
   }
 
   return (
     <div className="stepTwo_divStyle">
-      <Card className="stepTwo_cardStyle_home">
+      <Card className="top_cardStyle">
         <AppBar className="stepTwo_appbar" position="static">
           <Toolbar className="Toolbar">
             <Typography variant="h6">name of the app</Typography>

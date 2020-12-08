@@ -1,0 +1,56 @@
+h1 {
+    color: #393b44;
+  }
+  
+
+  .divStyle {
+    text-align: center;
+    margin: auto;
+  }
+  
+  .buttonStyle {
+    width: 200px;
+    height: 50px;
+    background-color: #8d93ab;
+    color: white;
+    margin: 10px;
+    &:hover {
+      background-color: #60636d;
+    }
+  }
+  // .Toolbar {
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
+  
+  // .appbar {
+  //   background-color: #393b44;
+  // }
+  
+  .buttons_class {
+    padding-top: 10px;
+    width: 240px;
+    height: 500px;
+    margin-left: 20px;
+  }
+  
+  .profile_details{
+    display:flex;
+    flex-direction: column;
+    margin: auto;
+    width: 500px;
+    height: 600px;
+  }
+
+  .fooo{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    justify-content: space-between ;
+    height: 47px;
+    font-size: 30px;
+    //width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #d0d0d3;
+  }

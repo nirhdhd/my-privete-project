@@ -25,10 +25,10 @@ function Home() {
 
   return (
     <div className="divStyle">
-      <Card className="cardStyle_home">
+      <Card className="top_cardStyle">
         <AppBar className="appbar" position="static">
           <Toolbar className="Toolbar">
-            <Typography variant="h6">name of the app</Typography>
+            <Typography variant="h6">BLANKS</Typography>
             <Button onClick={logout} variant="outlined" color="inherit">logout</Button>
           </Toolbar>
         </AppBar>

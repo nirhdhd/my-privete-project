@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Try from './try_component';
 import { useHistory } from "react-router-dom";
 
 
@@ -51,7 +50,7 @@ function Login(props) {
     <div className="divStyle_login">
       <Card className="cardStyle">
         <h1>Login</h1>
-        <Try></Try>
+
         <div className="foo">
           <TextField
             error={error}

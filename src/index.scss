@@ -1,0 +1,37 @@
+body {
+  //NIR-DEV
+  background-color: rgb(198, 215, 238);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+// general scss ----------------
+
+.Toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.appbar {
+  background-color: #393b44;
+}
+.top_cardStyle {
+  height: 768px;
+  width: 1366px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: rgb(118, 132, 155);
+  background: linear-gradient(
+    180deg,
+    rgba(214, 224, 240, 1) 0%,
+    rgba(241, 243, 248, 1) 34%
+  );
+}
+

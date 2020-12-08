@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
 import { StylesProvider } from "@material-ui/core";
 
@@ -11,6 +11,7 @@ import Home from "./components/home/home_component";
 import Step_One from "./components/createWorksheet/step_one";
 import Step_Two from "./components/createWorksheet/step_two";
 import OneWord from "./components/oneWord/oneWord"
+import User_profile from "./components/user_profile/user_profile"
 // import Step_Three from "./components/createWorksheet/step_three";
 //react-router
 
@@ -48,6 +49,9 @@ function App() {
 
         <Route path="/oneword">
           <OneWord />
+        </Route>
+        <Route path="/user_profile">
+          <User_profile />
         </Route>
         <Route path="/login">
           {loggedIn ? <Redirect to="/home" /> : <Login />}

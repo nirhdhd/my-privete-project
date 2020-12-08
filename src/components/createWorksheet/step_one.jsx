@@ -54,7 +54,7 @@ function Step_One({ textMatrix, dispatch }) {
 
   return (
     <div className="divStyle">
-      <Card className="cardStyle_home">
+      <Card className="top_cardStyle">
         <AppBar className="appbar" position="static">
           <Toolbar className="Toolbar">
             <Typography variant="h6">name of the app</Typography>

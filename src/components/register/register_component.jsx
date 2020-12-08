@@ -18,6 +18,15 @@ function Register() {
   const checkUserRegister = () => {
     console.log(username, email, password);
 
+    if (username == '' || email == '' || password == '') {
+
+      setHelpertxt("one of the details missing");
+      return;
+    }
+    else {
+      setHelpertxt("");
+    }
+
     Axios.post("http://localhost:5000/login/register", {
       username: username,
       email: email,
@@ -66,8 +75,8 @@ function Register() {
           />
           <div className="divider"></div>
           <TextField
-            error={error}
-            helperText={helpertxt}
+            // error={error}
+            //helperText={helpertxt}
             style={{ width: "350px", margin: "auto" }}
             id="password"
             label="Password"
@@ -78,6 +87,7 @@ function Register() {
             }}
           />
         </div>
+        <div className="helperText" >{helpertxt}</div>
         <div className="divider"></div>
 
         <div className="foo2">
