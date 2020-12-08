@@ -10,6 +10,9 @@ import Home from "@material-ui/icons/Home";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import $ from 'jquery'
 import OneWord from '../oneWord/oneWord'
+import { connect } from 'react-redux'
+import { setTextToMatrix, setTextDictionary } from "../../redux/actions"
+
 
 const textVal =
   `Lorem Ipsum is simply 
@@ -18,9 +21,11 @@ standard dummy text ever
 printer took a galley`;
 
 
-function Step_Two(props) {
+function Step_Two({ textStore, textDictionary, dispatch }) {
 
   const [elementss, setElementss] = useState([]);
+  const [_textStore, _setTextStore] = useState([]);
+  const [textArray, setTextArray] = useState([]);
 
   let history = useHistory();
   const location = useLocation();
@@ -28,17 +33,32 @@ function Step_Two(props) {
   //let textVal;
 
   useEffect(() => {
+
     //if (location.state != undefined)
     // textVal = (location.state).textVal || "";
+
+    return () => {
+
+    };
+
   });
 
   const goBack = () => {
     history.push("/step_one");
   };
+  const textToArray = (text) => {
+    let tempArray = [];
+    let textArray = [];
+    let index = 1;
+    tempArray = text.split(' ')
 
+    tempArray.forEach(element => {
+      textArray.push({ index: index, text: element })
+      index++;
+    });
+    return textArray;
+  }
   const splitText = () => {
-
-
     const elementssTemp = []
     let words;
     let rows = textVal.split("\n");
@@ -68,8 +88,37 @@ function Step_Two(props) {
       elementssTemp.push(<div style={{ display: "flex", flexDirection: "row" }}>{elementssTempArry}</div>);
     }
     setElementss(elementssTemp);
-  }
 
+  }
+  const updateTextStore = () => {
+
+    dispatch(setTextToMatrix(splitText()))
+    dispatch(setTextDictionary(textToArray(textVal)))
+
+    if (textDictionary.length == 0) return;
+    const wordsToRender = textDictionary.filter((x) => textStore.includes(x.index))
+
+
+
+    console.log("textStore", textStore)
+    console.log("textDictionary", textDictionary)
+    console.log("wordsToRender", wordsToRender);
+
+    // wordsToRender.forEach(el => {
+    //   const element = (<p>el.text</p>);
+    //   elementssTempArry.push(element);
+    // });
+
+
+    //_setTextStore(elementssTempArry);
+
+
+  }
+  const reset_selection = () => {
+    // dispatch(setTextDictionary([]))
+    // dispatch(setTextToMatrix(splitText()))
+    // splitText()
+  }
 
   return (
     <div className="stepTwo_divStyle">
@@ -85,6 +134,18 @@ function Step_Two(props) {
         </AppBar>
         <h1>step Two</h1>
         <h2>choose the words you want</h2>
+
+
+        <Button
+          style={{ width: '100px', alignSelf: 'center', backgroundColor: '#33a261' }}
+          variant="contained"
+          onClick={updateTextStore}>click
+        </Button>
+        <Button
+          style={{ width: '100px', alignSelf: 'center', backgroundColor: '#666261' }}
+          variant="contained"
+          onClick={reset_selection}>reset words
+        </Button>
 
         <Button
           style={{ width: '500px', alignSelf: 'center', backgroundColor: '#f4a261' }}
@@ -103,6 +164,7 @@ function Step_Two(props) {
         >
           {" "}
           <div className="elemnts_div"> {elementss}  </div>
+          <div className="text_store">{_textStore}  </div>
 
 
           <div>
@@ -119,4 +181,9 @@ function Step_Two(props) {
   );
 }
 
-export default Step_Two;
+const mapStateToProps = state => ({
+  textStore: state.textStore,
+  textDictionary: state.textDictionary
+})
+
+export default connect(mapStateToProps)(Step_Two);

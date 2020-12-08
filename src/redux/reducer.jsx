@@ -3,7 +3,7 @@
 
 const INITIAL_STATE = {
     textMatrix: null,
-    textDictionary: null,
+    textDictionary: [],
     textStore: [],//<!--TODO: SYNC WORD STORE TO STEP TWO-->
     CurrentUser: null
 }

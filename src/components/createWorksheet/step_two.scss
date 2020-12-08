@@ -49,11 +49,18 @@ h1 {
 
 .elemnts_div{
   display: block;
-  flex-direction: row;
+  //flex-direction: row;
   width: 855px;
   height: 400px;
   background-color: #ffffff;
   border: 2px solid black;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.text_store{
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-color: antiquewhite;
 }

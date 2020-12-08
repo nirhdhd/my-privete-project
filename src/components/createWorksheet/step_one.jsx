@@ -3,14 +3,12 @@ import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link, useHistory } from "react-router-dom";
-
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Home from "@material-ui/icons/Home";
 import "./step_one.scss";
-import { setTextToMatrix, setTextDictionary } from "../../redux/actions"
 import { connect } from 'react-redux'
 
 
@@ -19,25 +17,10 @@ function Step_One({ textMatrix, dispatch }) {
   const [textVal, setTextVal] = useState("");
 
   const foo = () => {
-
-    dispatch(setTextToMatrix(splitText()))
-    dispatch(setTextDictionary(textToArray(textVal)))
-    //console.log("textVal", textVal);
     history.push("/step_two", { textVal: textVal })
   }
 
-  const textToArray = (text) => {
-    let tempArray = [];
-    let textArray = [];
-    let index = 1;
-    tempArray = text.split(' ')
 
-    tempArray.forEach(element => {
-      textArray.push({ index: index, text: element })
-      index++;
-    });
-    return textArray;
-  }
 
   const splitText = () => {
     let words;
